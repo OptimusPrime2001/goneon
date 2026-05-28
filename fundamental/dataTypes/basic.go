@@ -34,6 +34,5 @@ func BasicTypes() {
 	msg := "Xin chao.\n tôi là " + name
 	fmt.Println("name string", name)
 	fmt.Println("msg string", msg)
-
 	//
 }
