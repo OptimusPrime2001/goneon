@@ -1,7 +1,8 @@
-package aggregate
+package main
 
 func main() {
-	Array()
-	Slice()
-	Map()
+	// Array()
+	// Slice()
+	// Map()
+	Struct()
 }

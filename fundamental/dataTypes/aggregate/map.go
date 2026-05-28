@@ -1,7 +1,6 @@
-package aggregate
+package main
 
 import "fmt"
-
 
 func Map() {
 	giaTraiCay := map[string]int{
@@ -19,4 +18,5 @@ func Map() {
 	for k, v := range giaTraiCay {
 		fmt.Printf("Qua %s co gia la %d\n", k, v)
 	}
+
 }
