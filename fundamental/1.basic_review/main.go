@@ -6,6 +6,11 @@ import (
 )
 
 func main() {
+	// Learning()
+	TempConverter()
+	CurrencyConverter()
+}
+func Learning() {
 	// Type inference
 	x := 100
 	y := 12.5
@@ -41,4 +46,46 @@ func main() {
 	var renameInt RenameInt = 100
 	fmt.Printf("RenameInt %d has type is %T\n", renameInt, renameInt)
 	// Underlying type là kiểu gốc bên dưới của một custom type.
+}
+
+type Celsius float64
+type Fahrenheit float64
+// Celsius -> Fahrenheit
+func cToF(c Celsius) Fahrenheit {
+	return Fahrenheit(c*9/5 + 32)
+}
+// Fahrenheit -> Celsius
+func fToC(f Fahrenheit) Celsius {
+	return Celsius((f - 32) * 5 / 9)
+}
+func TempConverter() {
+
+	c := Celsius(25)
+	f := cToF(c)
+
+	fmt.Printf("%.1f°C = %.1f°F\n", c, f)
+
+	f2 := Fahrenheit(77)
+	c2 := fToC(f2)
+
+	fmt.Printf("%.1f°F = %.1f°C\n", f2, c2)
+}
+
+
+type USD float64
+type VND float64
+
+func (u USD) ToVND() VND {
+	return VND(float64(u) * 25000)
+}
+
+func (v VND) ToUSD() USD {
+	return USD(float64(v) / 25000)
+}
+
+func CurrencyConverter() {
+	vnd := VND(2500000)
+	fmt.Printf("vnd : %v\n", vnd)
+	usd := vnd.ToUSD()
+	fmt.Printf("%.1fVND = %.1fUSD\n", vnd, usd)
 }
