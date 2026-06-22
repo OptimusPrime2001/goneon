@@ -16,9 +16,10 @@ import (
   - slices.Clone()
 */
 func Slice() {
-	nums := []int{1, 2, 3}
-	fmt.Println("Init Slice ", len(nums), cap(nums))
-	nums = append(nums, 4, 5)
+	originalArray := []int{1, 2, 3, 4, 5, 6}
+	newSlice := originalArray[1:4]
+	fmt.Println("Init Slice ", len(originalArray), cap(originalArray))
+	nums := append(originalArray, 4, 5)
 
 	fmt.Println("Append Slice ", len(nums), cap(nums))
 	b := make([]int, 2, 5) // len 2, cap 5
@@ -42,4 +43,33 @@ func Slice() {
 	empty := []int{}
 	fmt.Println("Empty slice", empty)
 	fmt.Println("Slice from array ", b, s, arr)
+}
+func CopySlice() {
+	src := []int{1, 2, 3}
+	dst := make([]int, len(src))
+
+	copy(dst, src)
+}
+func NillAndEmpty() {
+	var nillSlice []int
+	fmt.Printf("Check nill slice %v, len: %d, cap: %d", nillSlice, len(nillSlice), cap(nillSlice))
+
+	emptySlice := []int{}
+	fmt.Printf("Check nill slice %v, len: %d, cap: %d", emptySlice, len(emptySlice), cap(emptySlice))
+}
+func SliceOperations(slice []int) {
+	original := slice
+	fmt.Println("Slice gốc :", original)
+	fmt.Println("original[1:4] : ", original[1:4]) // [2 3 4]
+	fmt.Println("original[:3] : ", original[:3])   // [1 2 3]
+	fmt.Println("original[2:] : ", original[2:])   // [3 4 5]
+}
+func DeleteItem() {
+
+}
+func InsertSlice() {
+	slice := []int{1, 3, 5}
+	fmt.Println("After insert slice", slice)
+	slice = append(slice[:1], append([]int{2}, slice[1:]...)...)
+	fmt.Println("Before insert Slice", slice)
 }
