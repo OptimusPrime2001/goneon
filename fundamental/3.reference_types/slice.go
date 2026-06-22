@@ -39,5 +39,7 @@ func Slice() {
 	// Cả s và arr gốc đều thay đổi khi thay đổi s
 	s[0] = 9
 	s = append(s, 12)
+	empty := []int{}
+	fmt.Println("Empty slice", empty)
 	fmt.Println("Slice from array ", b, s, arr)
 }
