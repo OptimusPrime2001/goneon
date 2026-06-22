@@ -4,5 +4,6 @@ func main() {
 	// Array()
 	// Slice()
 	// Map()
-	Struct()
+	// Struct()
+	B1()
 }
