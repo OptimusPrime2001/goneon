@@ -24,6 +24,14 @@ func Slice() {
 	SliceOperations(originalArray)
 	DeleteItem()
 	InsertSlice()
+
+	GetFirst100()
+	// PreAllocate()
+
+	new := SliceHeader(originalArray)
+	new[0] = 0
+	fmt.Println("slice originalArray", originalArray)
+	fmt.Println("slice new", new)
 }
 func InitSlice() {
 	s1 := []string{"BTS", "Big Bang", "Cortis"}
@@ -57,6 +65,7 @@ func CopySlice() {
 	fmt.Printf("Slice original %v \n", dst2)
 	fmt.Printf("Slice original %v \n", dst3)
 }
+
 func NillAndEmpty() {
 	fmt.Println("======== NillAndEmpty =========")
 	var nillSlice []int
@@ -65,6 +74,7 @@ func NillAndEmpty() {
 	emptySlice := []int{}
 	fmt.Printf("Check nill slice %v, len: %d, cap: %d", emptySlice, len(emptySlice), cap(emptySlice))
 }
+
 func SliceOperations(slice []int) {
 	fmt.Println("\n======== SliceOperations =========")
 	original := slice
@@ -73,6 +83,7 @@ func SliceOperations(slice []int) {
 	fmt.Println("original[:3] : ", original[:3])   // [1 2 3]
 	fmt.Println("original[2:] : ", original[2:])   // [3 4 5]
 }
+
 func DeleteItem() {
 	fmt.Println("\n======== DeleteItem =========")
 	s := []int{0, 1, 2, 3, 4}
@@ -80,12 +91,50 @@ func DeleteItem() {
 	// xóa index 1
 	s = append(s[:2], s[3:]...)
 	fmt.Println("Slice deleted: ", s)
-
 }
+
 func InsertSlice() {
 	fmt.Println("\n======== InsertSlice=========")
 	slice := []int{1, 3, 5}
 	fmt.Println("After insert slice", slice)
 	slice = append(slice[:1], append([]int{2}, slice[1:]...)...)
 	fmt.Println("Before insert Slice", slice)
+}
+
+// Slice performance
+
+// Memory leak
+func GetFirst100() []byte {
+	fmt.Println("\n======== Memory Leak =========")
+	data := make([]byte, 100_000_000) // 100MB
+
+	// small := data[:100] khi return small thì small vẫn có giữ tham chiếu đến data nên Garbage Collection sẽ ko dọn dẹp data làm cho rò rỉ bộ nhớ
+	small := slices.Clone(data[:100])
+	fmt.Printf("%p\n", &data[0])
+	fmt.Printf("%p\n", &small[0])
+	return small
+}
+
+func PreAllocate() {
+	fmt.Println("\n======== PreAllocate =========")
+	// var numbers []int Non pre-allocate : Không cấp phát dung lượng bộ nhớ
+	/*
+		len=0 cap=0
+		Mỗi khi capacity đầy, Go sẽ:
+		Tạo array mới lớn hơn.
+		Copy toàn bộ dữ liệu cũ sang array mới.
+		Trỏ slice sang array mới.
+	*/
+	numbers := make([]int, 0, 10000) //Pre-allocate nếu biết trước cần 10000 phần tử
+
+	for i := range 10 {
+		numbers = append(numbers, i)
+		fmt.Printf("Value của number: %d, len: %d, cap: %d \n", numbers, len(numbers), cap(numbers))
+	}
+}
+
+func SliceHeader(original []int) []int {
+	init := original
+	init = append(init, 1, 2)
+	return init
 }
