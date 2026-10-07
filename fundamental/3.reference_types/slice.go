@@ -18,6 +18,9 @@ import (
 */
 func Slice() {
 	originalArray := []int{1, 2, 3, 4, 5, 6}
+
+	newSlice := originalArray[:4]
+	newSlice[0] = 101
 	InitSlice()
 	CopySlice()
 	NillAndEmpty()
