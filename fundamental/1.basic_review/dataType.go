@@ -49,6 +49,21 @@ func Runes() {
 	fmt.Println(string(a), string(e), string(aAcute), string(emoji))
 	fmt.Printf("%d %d %d %d\n", a, e, aAcute, emoji)
 }
+
+// Exercise
+func reverse(s string) string {
+	var arr = []string{}
+	for _, r := range s {
+		arr = append(arr, string(r))
+	}
+	count := len(arr)
+	var result string
+	for i := count - 1; i >= 0; i-- {
+		fmt.Println((arr[i]))
+		result = result + arr[i]
+	}
+	return result
+}
 func DataType() {
 	bool := Boolean()
 
@@ -56,4 +71,5 @@ func DataType() {
 
 	Numeric()
 	Runes()
+	fmt.Println(reverse("Việt Nam"))
 }
