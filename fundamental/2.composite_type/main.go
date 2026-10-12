@@ -6,6 +6,7 @@ func main() {
 	// String()
 	// Maps()
 	// Struct()
-	Loops()
-	Functions()
+	// Loops()
+	// Functions()
+	Pointer()
 }
