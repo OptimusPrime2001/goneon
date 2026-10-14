@@ -110,6 +110,20 @@ Folder `Composite Types/` để **phẳng**; cột **Nhóm** phân biệt ngữ 
 
 ---
 
+## 📦 Code Organization — Packages & Modules
+
+| Bài | Nội dung |
+|-----|----------|
+| [Module and Dependencies](<Code Organization/Module and Dependencies.md>) | `go.mod`, `go.sum`, SemVer, MVS, `replace`/`retract`, `go.work` |
+| [Packages](<Code Organization/Packages.md>) | Cấu trúc package, naming, `cmd/` `internal/` `pkg/`, visibility, `init()` |
+| [Package Import Rules](<Code Organization/Package Import Rules.md>) | Thứ tự import, alias/blank/dot import, chống circular |
+| [Using Third Party Packages](<Code Organization/Using Third Party Packages.md>) | Checklist chọn dependency, pin version, `GOPRIVATE`, vendor, audit |
+| [Publishing Modules](<Code Organization/Publishing Modules.md>) | Publish qua Git tag, Semantic Import Versioning, `retract`, `gorelease` |
+
+> Thứ tự đọc: **Module and Dependencies → Packages → Package Import Rules → Using Third Party → Publishing Modules**
+
+---
+
 ## 🛠 Tooling
 
 | Bài | Nội dung |
@@ -129,10 +143,10 @@ Folder `Composite Types/` để **phẳng**; cột **Nhóm** phân biệt ngữ 
 
 ## Roadmap chưa viết thành doc
 
-`Roadmap.md` có 21 chương; `document/` mới có chương **1, 2, 3** (gộp vào `Basic Review/` và `Composite Types/`) + `Tooling/`.
+`Roadmap.md` có 21 chương; `document/` mới có chương **1, 2, 3** (gộp vào `Basic Review/` và `Composite Types/`) + **8** (`Code Organization/`) + `Tooling/`.
 
 * 4. Control Flow · 5. Methods · 6. Interfaces · 7. Error Handling
-* 8. Packages & Modules · 9. Generics · 10. Memory Model · 11. Concurrency
+* 9. Generics · 10. Memory Model · 11. Concurrency
 * 12. Runtime Internals · 13. Standard Library · 14. File Handling · 15. Testing
 * 16. HTTP Server · 17. Database · 18. Profiling · 20. Advanced · 21. Production
 
