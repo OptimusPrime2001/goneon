@@ -132,6 +132,25 @@ Folder `Composite Types/` để **phẳng**; cột **Nhóm** phân biệt ngữ 
 
 ---
 
+## 🛡 Error Handling — Xử lý lỗi
+
+Folder `Error Handling/` để **phẳng**; đọc theo thứ tự từ nền tảng → nâng cao.
+
+| Bài | Nội dung chính |
+|-----|----------------|
+| [Error Handling Basics](<Error Handling/Error Handling Basics.md>) | Triết lý "error là giá trị", idiomatic `(T, error)`, `err != nil`, fail fast, tránh nuốt lỗi |
+| [The error Interface](<Error Handling/The error Interface.md>) | Bản chất interface `error{ Error() string }`, custom error struct, bẫy **typed-nil** |
+| [Creating Errors](<Error Handling/Creating Errors.md>) | `errors.New`, `fmt.Errorf`, khác biệt `%w` vs `%v`/`%s`, nhiều `%w` (Go 1.20+) |
+| [Error Wrapping](<Error Handling/Error Wrapping.md>) | `errors.Unwrap`, `errors.Is`, `errors.As`, method `Is`/`Unwrap` tùy biến, `errors.Join` |
+| [Sentinel Errors](<Error Handling/Sentinel Errors.md>) | Biến error export sẵn (`ErrXxx`), `errors.Is` vs `==`, sentinel stdlib (`io.EOF`, `os.ErrNotExist`) |
+| [panic and recover](<Error Handling/panic and recover.md>) | `panic` (unwind + LIFO defer), `recover` trong `defer`, runtime panic, khi nào panic hợp lệ |
+| [Stack Traces and Debugging](<Error Handling/Stack Traces and Debugging.md>) | `runtime/debug.Stack`, `GOTRACEBACK`, đọc/hiểu stack trace, mẹo debug |
+
+> Thứ tự đọc: **Basics → error Interface → Creating Errors → Error Wrapping → Sentinel → panic and recover → Stack Traces**
+> Code mẫu: `fundamental/4.error_handling/`
+
+---
+
 ## Các file còn lại
 
 | File | Nội dung |
@@ -143,9 +162,9 @@ Folder `Composite Types/` để **phẳng**; cột **Nhóm** phân biệt ngữ 
 
 ## Roadmap chưa viết thành doc
 
-`Roadmap.md` có 21 chương; `document/` mới có chương **1, 2, 3** (gộp vào `Basic Review/` và `Composite Types/`) + **8** (`Code Organization/`) + `Tooling/`.
+`Roadmap.md` có 21 chương; `document/` mới có chương **1, 2, 3** (gộp vào `Basic Review/` và `Composite Types/`) + **7** (`Error Handling/`) + **8** (`Code Organization/`) + `Tooling/`.
 
-* 4. Control Flow · 5. Methods · 6. Interfaces · 7. Error Handling
+* 4. Control Flow · 5. Methods · 6. Interfaces
 * 9. Generics · 10. Memory Model · 11. Concurrency
 * 12. Runtime Internals · 13. Standard Library · 14. File Handling · 15. Testing
 * 16. HTTP Server · 17. Database · 18. Profiling · 20. Advanced · 21. Production
