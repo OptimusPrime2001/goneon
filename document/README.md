@@ -151,6 +151,26 @@ Folder `Error Handling/` để **phẳng**; đọc theo thứ tự từ nền t�
 
 ---
 
+## 🔄 Concurrency — Đồng thời (Roadmap §11)
+
+Folder `Concurrency/` để **phẳng**; đọc từ nền tảng → nâng cao.
+
+| Bài | Nội dung chính | Trạng thái |
+|-----|----------------|-----------|
+| [Goroutines](<Concurrency/Goroutines.md>) | Goroutine là gì, `go` keyword, lifecycle, concurrency ≠ parallelism, đồng bộ bằng channel, data race, goroutine leak, pitfall (sleep/loop capture/panic) | ✅ |
+| [Channels](<Concurrency/Channels.md>) | Unbuffered/buffered, directional channel, `close`, `range`, comma ok, **Select** (non-block, timeout, nil channel) | ✅ |
+| [Select](<Concurrency/Select.md>) | ❌ **Đã gộp vào `Channels.md`** (mục 5) | ❌ gộp |
+| [Worker Pool](<Concurrency/Worker Pool.md>) | `sync.WaitGroup`, worker pool cố định, job động, thứ tự close, chống deadlock | ✅ |
+| [Synchronization](<Concurrency/Synchronization.md>) | Mutex, RWMutex, Atomic | ⬜ |
+| [Context](<Concurrency/Context.md>) | Cancel, timeout, truyền context | ⬜ |
+| [Concurrency Patterns](<Concurrency/Concurrency Patterns.md>) | Fan-Out/Fan-In, Pipeline, Producer-Consumer | ⬜ |
+| Common Problems *(gộp vào bài trên)* | Race Condition & Goroutine Leak → `Goroutines.md`; Deadlock → `Worker Pool.md` | ✅ |
+
+> Thứ tự đọc: **Goroutines → Channels (+ Select) → Worker Pool (+ WaitGroup) → Synchronization → Context → Concurrency Patterns**
+> Code mẫu: `fundamental/5.concurrency/`
+
+---
+
 ## Các file còn lại
 
 | File | Nội dung |
@@ -162,11 +182,11 @@ Folder `Error Handling/` để **phẳng**; đọc theo thứ tự từ nền t�
 
 ## Roadmap chưa viết thành doc
 
-`Roadmap.md` có 21 chương; `document/` mới có chương **1, 2, 3** (gộp vào `Basic Review/` và `Composite Types/`) + **7** (`Error Handling/`) + **8** (`Code Organization/`) + `Tooling/`.
+`Roadmap.md` có 21 chương; `document/` mới có chương **1, 2, 3** (gộp vào `Basic Review/` và `Composite Types/`) + **7** (`Error Handling/`) + **8** (`Code Organization/`) + **11 (một phần — còn `Synchronization`/`Context`/`Concurrency Patterns`)** + `Tooling/`.
 
 * 4. Control Flow · 5. Methods · 6. Interfaces
-* 9. Generics · 10. Memory Model · 11. Concurrency
-* 12. Runtime Internals · 13. Standard Library · 14. File Handling · 15. Testing
+* 9. Generics · 10. Memory Model · 12. Runtime Internals
+* 13. Standard Library · 14. File Handling · 15. Testing
 * 16. HTTP Server · 17. Database · 18. Profiling · 20. Advanced · 21. Production
 
 ---
