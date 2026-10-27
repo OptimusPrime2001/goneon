@@ -7,9 +7,10 @@ import (
 )
 
 // WaitGroupDemo — "chờ TẤT CẢ goroutine con xong".
-//   wg.Add(n)   → báo trước có n việc cần chờ (PHẢI chạy TRƯỚC `go`)
-//   wg.Done()   → báo 1 việc đã xong (thường defer trong goroutine)
-//   wg.Wait()   → main đứng chờ tới khi counter về 0
+//
+//	wg.Add(n)   → báo trước có n việc cần chờ (PHẢI chạy TRƯỚC `go`)
+//	wg.Done()   → báo 1 việc đã xong (thường defer trong goroutine)
+//	wg.Wait()   → main đứng chờ tới khi counter về 0
 func WaitGroupDemo() {
 	var wg sync.WaitGroup
 
@@ -32,7 +33,7 @@ func WaitGroupDemo() {
 //	jobs ──► [worker x3] ──► results
 //
 // Số worker CỐ ĐỊNH → không tạo 1000 goroutine cho 1000 job.
-func WorkerPool() {
+func WorkerPools() {
 	const (
 		numWorkers = 3
 		numJobs    = 6

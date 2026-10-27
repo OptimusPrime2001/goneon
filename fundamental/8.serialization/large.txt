@@ -1,0 +1,5 @@
+INFO server started
+ERROR database connection failed
+INFO request completed
+error: timeout while calling API
+INFO server stopped
