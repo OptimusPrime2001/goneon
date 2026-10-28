@@ -3,7 +3,9 @@ package main
 import (
 	"bufio"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
 	"os"
 	"strings"
 )
@@ -131,6 +133,78 @@ func BAI6() {
 	fmt.Println("\nTotal lines: ", totaLine)
 	fmt.Println("Error lines: ", errorLines)
 }
+
+func BAI7() {
+	file, error := os.Open("users.json")
+	if error != nil {
+		fmt.Println("Open file error:", error)
+		return
+	}
+	defer file.Close()
+
+	var user []User
+	decoder := json.NewDecoder(file)
+	if err := decoder.Decode(&user); err != nil {
+		fmt.Println("Decode error:", err)
+		return
+	}
+	fmt.Printf("%+v\n", user)
+}
+func BAI7_Write() {
+	file, err := os.Create("output.json")
+	if err != nil {
+		fmt.Println("Create file error:", err)
+		return
+	}
+	defer file.Close()
+
+	user := User{
+		ID:    2,
+		Name:  "Bob",
+		Email: "bob@example.com",
+	}
+
+	encoder := json.NewEncoder(file) //tạo encoder ghi JSON trực tiếp vào file.
+	encoder.SetIndent("", "    ")    //giúp JSON dễ đọc.
+
+	if err := encoder.Encode(user); err != nil { //ghi JSON và tự thêm ký tự xuống dòng ở cuối.
+		fmt.Println("Encode error:", err)
+		return
+	}
+
+	fmt.Println("User saved successfully")
+}
+func BAI7Stream() {
+	file, err := os.Open("users.ndjson")
+	if err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			fmt.Println("File không tồn tại")
+			return
+		}
+
+		fmt.Println("Open file error:", err)
+		return
+	}
+	defer file.Close()
+
+	decoder := json.NewDecoder(file)
+
+	for {
+		var user User
+
+		err := decoder.Decode(&user)
+		if err != nil {
+			if errors.Is(err, io.EOF) {
+				break
+			}
+
+			fmt.Println("Decode error:", err)
+			return
+		}
+
+		fmt.Printf("ID: %d, Name: %s\n", user.ID, user.Name)
+	}
+}
 func main() {
-	BAI6()
+	BAI7Stream()
 }
